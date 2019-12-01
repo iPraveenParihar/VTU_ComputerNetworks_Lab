@@ -55,7 +55,7 @@ class Server {
 					System.out.println("Requested File Not Found\n\n");
 					continue;
 				}
-
+				dout.writeUTF("Found");
 				fileReader = new FileInputStream(file);
 
 				System.out.println("Sending file "+filename+" [Size : "+file.length()+" bytes]");

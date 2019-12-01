@@ -54,18 +54,15 @@ class Client {
 			file = new File("Client_copy_"+filename);
 			fileWriter = new FileOutputStream(file,false);
 
-			byte[] buffer = new byte[1024];
+			byte[] buffer = new byte[4096];
 			int read;
 
-			
-			do {
-				read = din.read(buffer, 0, buffer.length);
-				fileWriter.write(buffer,0,buffer.length);
+			while((read = din.read(buffer, 0, buffer.length)) > 0) {
+				fileWriter.write(buffer, 0, read);
 				System.out.write(buffer);
-			}while(!(read < 1024));
-		
+			}
 
-			System.out.println("Recevied:"+file.length()+" bytes");
+			System.out.println("\nRecevied:"+file.length()+" bytes");
 
 			fileWriter.close();
 			dout.close();
