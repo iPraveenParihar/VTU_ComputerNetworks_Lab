@@ -19,6 +19,7 @@ class Client {
 	static String address;
 	static String port;
 	static String filename;
+	static String response;
 
 	public static void getConnection() throws Exception{
 
@@ -43,6 +44,12 @@ class Client {
 			filename = br.readLine();
 
 			dout.writeUTF(filename);
+
+			
+			if((response = din.readUTF()).equals("Not Found")){
+				System.out.println("\nRequested File Not Found\n");
+				return;
+			}
 
 			file = new File("Client_copy_"+filename);
 			fileWriter = new FileOutputStream(file,false);

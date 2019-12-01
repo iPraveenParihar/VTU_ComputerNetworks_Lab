@@ -52,6 +52,7 @@ class Server {
 					din.close();
 					socket.close();
 					serverSocket.close();
+					System.out.println("Requested File Not Found\n\n");
 					continue;
 				}
 
