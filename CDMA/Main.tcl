@@ -40,12 +40,12 @@ proc cell_topo {} {
 
 proc set_link_layer {t} {
 	global ns nodes bwDL bwUL propUL propDL buf
-	$ns bandwidth $nodes(bs1) $ndoes(ms) $bwDL($t) duplex
-	$ns bandwidth $nodes(bs2) $ndoes(ms) $bwDL($t) duplex
-	$ns delay $nodes(bs1) $ndoes(ms) $propDL($t) duplex
-	$ns delay $nodes(bs2) $ndoes(ms) $propDL($t) duplex
-	$ns queue-limit $nodes(bs1) $ndoes(ms) 10
-	$ns queue-limit $nodes(bs2) $ndoes(ms) 10
+	$ns bandwidth $nodes(bs1) $nodes(ms) $bwDL($t) duplex
+	$ns bandwidth $nodes(bs2) $nodes(ms) $bwDL($t) duplex
+	$ns delay $nodes(bs1) $nodes(ms) $propDL($t) duplex
+	$ns delay $nodes(bs2) $nodes(ms) $propDL($t) duplex
+	$ns queue-limit $nodes(bs1) $nodes(ms) 10
+	$ns queue-limit $nodes(bs2) $nodes(ms) 10
 }
 
 Queue/RED set adaptive_ $adaptive
@@ -87,7 +87,7 @@ proc stop {} {
 		 $RAW2XG -a -s 0.01 -m $wrap -r >> plot.xgr
  	exec xgraph -x time -y packets plot.xgr &
 
- 	exec nam out.name &
+ 	exec nam out.nam &
  	exit 0
 }
 

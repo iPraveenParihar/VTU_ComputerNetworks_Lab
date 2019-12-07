@@ -13,7 +13,7 @@ $ns node-config -adhocRouting DSDV \
 				-ifqLen 50 \
 				-phyType Phy/WirelessPhy \
 				-channelType Channel/WirelessChannel \
-				-prrootype Propagation/TwoRayGround \
+				-proptype Propagation/TwoRayGround \
 				-antType Antenna/OmniAntenna \
 				-topoInstance $topo \
 				-agentTrace ON \
