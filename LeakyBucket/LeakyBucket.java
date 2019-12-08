@@ -31,27 +31,27 @@ public class LeakyBucket {
 			for(i = 0; i < sec; i++){
 				pSize += packet[i];
 				if(pSize > capacity){
-					drop = pSize - capacity;
-					pSize = capacity;
+					drop = pSize - capacity - rate;
+					//pSize = capacity;
 				}
 
 				System.out.print(i+1+"\t\t"+packet[i]);
 				minSize = Math.min(pSize,rate);
 				System.out.print("\t\t"+minSize);
-				pSize = pSize - minSize;
+				pSize = Math.min(pSize - minSize - drop, capacity);
 				System.out.print("\t\t"+pSize);
 				System.out.print("\t\t"+drop+"\n");
 				drop = 0;
 			}
 			while(pSize != 0){
 				if(pSize > capacity){
-					drop = pSize - capacity;
-					pSize = capacity;
+					drop = pSize - capacity - rate;
+					//pSize = capacity;
 				}
 				System.out.print(i+1+"\t\t0");
 				minSize = Math.min(pSize,rate);
 				System.out.print("\t\t"+minSize);
-				pSize = pSize - minSize;
+				pSize = Math.min(pSize - minSize - drop, capacity);
 				System.out.print("\t\t"+pSize);
 				System.out.print("\t\t"+drop+"\n");
 				i++;
