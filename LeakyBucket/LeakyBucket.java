@@ -32,7 +32,6 @@ public class LeakyBucket {
 				pSize += packet[i];
 				if(pSize > capacity){
 					drop = pSize - capacity - rate;
-					//pSize = capacity;
 				}
 
 				System.out.print(i+1+"\t\t"+packet[i]);
@@ -46,7 +45,6 @@ public class LeakyBucket {
 			while(pSize != 0){
 				if(pSize > capacity){
 					drop = pSize - capacity - rate;
-					//pSize = capacity;
 				}
 				System.out.print(i+1+"\t\t0");
 				minSize = Math.min(pSize,rate);
